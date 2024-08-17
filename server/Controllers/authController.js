@@ -28,9 +28,12 @@ const createSendToken = (model, statusCode, res) => {
     ),
     // expires: new Date(Date.now() + 1 * 60 * 1000), // 1 minute from now
 
+    // At the time of deployment, the sameSite attribute be should be None.
+    // And if i am running the website on localhost then the sameSite attribute should be commented out.
+
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production', // Set secure attribute based on environment
-    sameSite: 'None', // Set sameSite attribute
+    // sameSite: 'None', // Set sameSite attribute
     // domain: 'ocalhost', // Set domain to localhost
     // domain: 'jeevan-frontend.vercel.app',
   };
@@ -319,12 +322,14 @@ exports.updatePasswordPatient = catchAsync(async (req, res, next) => {
   await updatePassword(req, res, patient, next);
 });
 
+// At the time of deployment, the sameSite attribute be should be None.
+// And if i am running the website on localhost then the sameSite attribute should be commented out.
 exports.logout = (req, res) => {
   res.cookie('jwt', 'loggedout', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production', // Set secure attribute based on environment
-    sameSite: 'None',
+    // sameSite: 'None',
   });
   res.status(200).json({ status: 'success' });
 };

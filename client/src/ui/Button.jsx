@@ -11,6 +11,8 @@ function Button({ children, type, disabled, onClick }) {
     danger: `p-small flex items-center tracking-wider justify-center rounded-md text-sm font-medium px-3 md:px-6 py-2 text-grey-50 bg-red-700 font-sans`,
     sidebar:
       'font-medium text-base subpixel-antialiased tracking-wide flex flex-row items-center gap-2',
+    position:
+      'font-mono tracking-wider font-bold absolute z-[1000] text-sm bottom-16 left-1/2 transform -translate-x-1/2 bg-indigo-800 shadow-[0_0.4rem_1.2rem_rgba(36,42,46,0.16)] text-inherit uppercase py-2 px-4 font-inherit text-sm border-none rounded-[5px] cursor-pointer text-white',
   };
   return (
     <button className={styles[type]} disabled={disabled} onClick={onClick}>

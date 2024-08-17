@@ -12,7 +12,8 @@ import MainHeader from './ui/WithoutProtected/Header/MainHeader';
 import DefaultSpinner from './ui/DefaultSpinner';
 import ChatPage from './pages/ChatPage';
 import { ChatProvider } from './Context/ChatContext';
-import MapForDocPat from './pages/MapForDocPat';
+import Form from './features/MapForDocPat/Form';
+import SidebarHos from './features/MapForDocPat/SidebarHos';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const Login = lazy(() => import('./pages/Login'));
@@ -59,7 +60,6 @@ function App() {
                 <Route path="success" element={<Success />} />
                 <Route path="cancel" element={<Cancel />} />
                 <Route path="appointments" element={<Appointments />} />
-                <Route path="doctors/patient" element={<MapForDocPat />} />
                 <Route
                   path="chat"
                   element={
@@ -83,7 +83,8 @@ function App() {
               <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<HomePage />} />
               <Route path="login" element={<Login />} />
-              <Route path="issues" element={<Issues />} />
+              {/* <Route path="issues" element={<Issues />} /> */}
+              <Route path="issues/*" element={<Issues />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Suspense>
