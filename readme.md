@@ -56,3 +56,4 @@ This is an Online Hospital Management System, where we have two types of users: 
 ![image](https://github.com/chirag412vijayvergiya/Health/assets/111374446/ef3a71f7-3f06-47cb-87ee-06bc492ed256)
 
 <img width="1280" alt="Screenshot 2024-05-15 at 4 03 31 PM" src="https://github.com/chirag412vijayvergiya/Health/assets/111374446/671b8134-4b48-438e-8262-ef0d2a5b5670">
+# SIH
