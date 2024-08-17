@@ -28,8 +28,8 @@ function AppointmentTable() {
   if (!appointments?.length) return <Empty resourceName="Appointment" />;
   return (
     <Menus>
-      <div className=" mt-6 flex flex-col font-mono">
-        <div className="my-2 overflow-x-auto  rounded-sm border-b  border-grey-100 shadow-2xl  shadow-slate-200 dark:border-gray-600 dark:shadow-slate-800 sm:mx-3 lg:mx-4">
+      <div className="mt-6 flex flex-col font-mono">
+        <div className="my-2 overflow-x-auto rounded-sm border-b  border-grey-100 shadow-2xl  shadow-slate-200 dark:border-gray-600 dark:shadow-slate-800 sm:mx-3 lg:mx-4">
           <div className="inline-block min-w-full align-middle ">
             <div className="overflow-hidden">
               <table className="min-w-full divide-y divide-gray-200">

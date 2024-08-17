@@ -12,6 +12,7 @@ import MainHeader from './ui/WithoutProtected/Header/MainHeader';
 import DefaultSpinner from './ui/DefaultSpinner';
 import ChatPage from './pages/ChatPage';
 import { ChatProvider } from './Context/ChatContext';
+import MapForDocPat from './pages/MapForDocPat';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const Login = lazy(() => import('./pages/Login'));
@@ -58,6 +59,7 @@ function App() {
                 <Route path="success" element={<Success />} />
                 <Route path="cancel" element={<Cancel />} />
                 <Route path="appointments" element={<Appointments />} />
+                <Route path="doctors/patient" element={<MapForDocPat />} />
                 <Route
                   path="chat"
                   element={
