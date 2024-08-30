@@ -1,8 +1,8 @@
 const express = require('express');
+const passport = require('passport');
 const patientController = require('../Controllers/patientController');
 const currentUserController = require('../Controllers/currentUserController');
 const authController = require('../Controllers/authController');
-const passport = require('passport');
 const { createSendToken } = require('../utils/jwt');
 
 const router = express.Router();

@@ -19,6 +19,33 @@ function Form() {
   const [emoji, setEmoji] = useState('');
   const [geoCodingError, setGeoCodingError] = useState('');
 
+  const hospitals = [
+    {
+      name: 'Apollo Hospital',
+      address: 'Sarita Vihar, New Delhi',
+      contact: '011-123456789',
+      distance: '2.3 km',
+    },
+    {
+      name: 'Fortis Hospital',
+      address: 'Vasant Kunj, New Delhi',
+      contact: '011-123456789',
+      distance: '3.5 km',
+    },
+    {
+      name: 'Max Hospital',
+      address: 'Saket, New Delhi',
+      contact: '011-123456789',
+      distance: '4.2 km',
+    },
+    {
+      name: 'AIIMS',
+      address: 'Ansari Nagar, New Delhi',
+      contact: '011-123456789',
+      distance: '5.3 km',
+    },
+  ];
+
   useEffect(
     function () {
       console.log(lat, lng);
@@ -54,23 +81,55 @@ function Form() {
     [lat, lng],
   );
   return (
-    <form
-      className="mt-4 flex w-full flex-col gap-8 rounded-lg bg-slate-700 p-4 font-mono md:p-8"
-      //   onSubmit={handleSubmit}
-    >
-      <div className="relative flex flex-col gap-2 ">
-        <label htmlFor="cityName" className="text-white">
-          City name
-        </label>
-        <input
-          id="cityName"
-          onChange={(e) => setCityName(e.target.value)}
-          className="rounded-md border-[1px] border-solid p-[0.4rem_0.8rem] text-slate-900"
-          value={cityName}
-        />
-        <span className="absolute right-4 top-9 text-3xl">{emoji}</span>
+    <>
+      <form
+        className="mt-4 flex w-full flex-col gap-8 rounded-lg bg-slate-700 p-4 font-mono md:p-8 md:py-2"
+        //   onSubmit={handleSubmit}
+      >
+        <div className="relative flex flex-col gap-2 ">
+          <label htmlFor="cityName" className="text-white">
+            City name
+          </label>
+          <input
+            id="cityName"
+            onChange={(e) => setCityName(e.target.value)}
+            className="rounded-md border-[1px] border-solid p-[0.4rem_0.8rem] text-slate-900"
+            value={cityName}
+          />
+          <span className="absolute right-4 top-9 text-3xl">{emoji}</span>
+        </div>
+      </form>
+      <div
+        className="mt-4 flex w-full flex-col gap-8 rounded-lg bg-slate-700 p-4 font-mono md:p-8 md:py-3"
+        //   onSubmit={handleSubmit}
+      >
+        <div className="relative flex flex-col gap-2 font-mono">
+          <label htmlFor="cityName" className="mx-auto text-green-300">
+            Hospital in Ascending Order of Distance
+          </label>
+          {hospitals.map((hospital) => (
+            <div
+              key={hospital.id}
+              className="flex flex-col gap-2 border-b-2 border-blue-600"
+            >
+              <div className="flex justify-between">
+                <span className="text-lg text-indigo-300">{hospital.name}</span>
+                <span className="text-green-300 text-white">
+                  {hospital.distance}
+                </span>
+              </div>
+              <span className="text-white">{hospital.address}</span>
+              <a
+                href={`tel:${hospital.contact}`}
+                className="text-white hover:text-grey-400"
+              >
+                {hospital.contact}
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
-    </form>
+    </>
   );
 }
 

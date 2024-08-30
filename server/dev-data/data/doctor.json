@@ -3,6 +3,11 @@
     "_id": "5c8a1d5b0190b214360dc057",
     "name": "Chirag Vijayvergiya",
     "email": "chirag@jeeven.io",
+    "address": "Indore",
+    "coordinates": {
+      "latitude": 22.7196,
+      "longitude": 75.8577
+    },
     "gender": "Male",
     "role": "admin",
     "active": true,
@@ -22,6 +27,11 @@
     "_id": "5c8a1f292f8fb814b56fa184",
     "name": "Shubham Agrawal",
     "email": "shubham@example.com",
+    "address": "Udaipur",
+    "coordinates": {
+      "latitude": 25.7196,
+      "longitude": 73.8577
+    },
     "gender": "Male",
     "role": "doctor",
     "active": true,
@@ -36,6 +46,11 @@
     "_id": "5c8a1f4e2f8fb814b56fa185",
     "name": "Anmol Pandey",
     "email": "jennifer@example.com",
+    "address": "Jaipur",
+    "coordinates": {
+      "latitude": 26.7196,
+      "longitude": 75.8577
+    },
     "gender": "Male",
     "role": "doctor",
     "active": true,
@@ -50,6 +65,11 @@
     "_id": "5c8a21d02f8fb814b56fa189",
     "name": "Steve T. Scaife",
     "email": "steve@example.com",
+    "address": "Mumbai",
+    "coordinates": {
+      "latitude": 19.076,
+      "longitude": 72.8777
+    },
     "gender": "Male",
     "role": "doctor",
     "active": true,
@@ -64,6 +84,11 @@
     "_id": "5c8a21f22f8fb814b56fa18a",
     "name": "Aditya Ghatia",
     "email": "aditya@example.com",
+    "address": "Delhi",
+    "coordinates": {
+      "latitude": 28.7041,
+      "longitude": 77.1025
+    },
     "gender": "Male",
     "role": "doctor",
     "active": true,
@@ -78,6 +103,11 @@
     "_id": "5c8a23412f8fb814b56fa18c",
     "name": "Kapil Agrawal",
     "email": "kapil@example.com",
+    "address": "Kolkata",
+    "coordinates": {
+      "latitude": 22.5726,
+      "longitude": 88.3639
+    },
     "gender": "Male",
     "role": "doctor",
     "active": true,
@@ -92,6 +122,11 @@
     "_id": "5c8a245f2f8fb814b56fa191",
     "name": "Eduardo Hernandez",
     "email": "edu@example.com",
+    "address": "Mexico City",
+    "coordinates": {
+      "latitude": 19.4326,
+      "longitude": -99.1332
+    },
     "gender": "Female",
     "role": "doctor",
     "active": true,
@@ -106,6 +141,11 @@
     "_id": "5c8a24a02f8fb814b56fa193",
     "name": "Akshat Goyal",
     "email": "akshat@example.com",
+    "address": "Bangalore",
+    "coordinates": {
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
     "gender": "Male",
     "role": "doctor",
     "active": true,

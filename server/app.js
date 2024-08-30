@@ -151,6 +151,7 @@ const doctorRouter = require('./Routes/doctorRoute');
 const patientRouter = require('./Routes/patientRoute');
 const messageRouter = require('./Routes/messageRoute');
 const chatRouter = require('./Routes/chatRoute');
+const hospitalRouter = require('./Routes/hospitalRoute');
 
 const appointmentRouter = require('./Routes/appointmentRoute');
 const reviewRouter = require('./Routes/reviewRoute');
@@ -257,13 +258,14 @@ app.use(xss());
 //   console.log('Hello from the middleware 👋');
 //   next();
 // });
-
+app.use('/api/v1/hospitals', hospitalRouter);
 app.use('/api/v1/patient', patientRouter);
 app.use('/api/v1/doctor', doctorRouter);
 app.use('/api/v1/appointment', appointmentRouter);
 app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/messages', messageRouter);
 app.use('/api/v1/chats', chatRouter);
+app.use('/api/v1/hospitals', hospitalRouter);
 
 //For other route which we have not defned!
 app.all('*', (req, res, next) => {

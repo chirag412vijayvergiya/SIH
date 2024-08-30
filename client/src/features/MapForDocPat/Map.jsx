@@ -48,7 +48,36 @@ function Map() {
   );
 
   return (
-    <div className="relative h-[100%] w-full overflow-hidden bg-gray-500 md:h-[calc(100vh-6rem)] md:w-1/2 md:flex-1">
+    // <div className="relative h-[100%] w-full overflow-hidden bg-gray-500 md:h-[calc(100vh-6rem)] md:w-1/2 md:flex-1">
+    //   {!geolocationPosition && (
+    //     <Button type="position" onClick={getPosition}>
+    //       {isLoadingPostion ? 'Loading...' : 'Use your position'}
+    //     </Button>
+    //   )}
+
+    //   <MapContainer
+    //     center={mapPosition}
+    //     zoom={9}
+    //     scrollWheelZoom={true}
+    //     className={styles.map}
+    //   >
+    //     <TileLayer
+    //       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    //       url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+    //     />
+    //     <Marker position={mapPosition}>
+    //       <Popup>
+    //         <div className="flex items-center ">
+    //           <span className="text-sm leading-none">A pretty CSS3 popup.</span>
+    //           <span>Easily customizable.</span>
+    //         </div>
+    //       </Popup>
+    //     </Marker>
+    //     <ChangeCenter position={mapPosition} />
+    //     <DetectClick />
+    //   </MapContainer>
+    // </div>
+    <div className="relative h-full w-full overflow-hidden bg-gray-500 md:h-[calc(100vh-6rem)] md:w-1/2 md:flex-1">
       {!geolocationPosition && (
         <Button type="position" onClick={getPosition}>
           {isLoadingPostion ? 'Loading...' : 'Use your position'}
@@ -59,7 +88,7 @@ function Map() {
         center={mapPosition}
         zoom={9}
         scrollWheelZoom={true}
-        className={styles.map}
+        className="h-[300px] w-full md:h-full"
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -67,7 +96,7 @@ function Map() {
         />
         <Marker position={mapPosition}>
           <Popup>
-            <div className="flex items-center ">
+            <div className="flex flex-col items-center">
               <span className="text-sm leading-none">A pretty CSS3 popup.</span>
               <span>Easily customizable.</span>
             </div>
