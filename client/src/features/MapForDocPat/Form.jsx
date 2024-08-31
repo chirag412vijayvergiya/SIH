@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useUrlPosition } from '../../hooks/useUrlPosition';
+import { useGetNearhospitals } from './useGetNearhospitals';
+import { BsFillTelephoneFill } from 'react-icons/bs';
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -14,77 +16,49 @@ function Form() {
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [cityName, setCityName] = useState('');
   const [country, setCountry] = useState('');
-  const [date, setDate] = useState(new Date());
-  const [notes, setNotes] = useState('');
   const [emoji, setEmoji] = useState('');
   const [geoCodingError, setGeoCodingError] = useState('');
 
-  const hospitals = [
-    {
-      name: 'Apollo Hospital',
-      address: 'Sarita Vihar, New Delhi',
-      contact: '011-123456789',
-      distance: '2.3 km',
-    },
-    {
-      name: 'Fortis Hospital',
-      address: 'Vasant Kunj, New Delhi',
-      contact: '011-123456789',
-      distance: '3.5 km',
-    },
-    {
-      name: 'Max Hospital',
-      address: 'Saket, New Delhi',
-      contact: '011-123456789',
-      distance: '4.2 km',
-    },
-    {
-      name: 'AIIMS',
-      address: 'Ansari Nagar, New Delhi',
-      contact: '011-123456789',
-      distance: '5.3 km',
-    },
-  ];
+  // Use custom hook to fetch nearby hospitals based on latitude and longitude
+  const { isPending, hospitals } = useGetNearhospitals(lat, lng);
 
-  useEffect(
-    function () {
-      console.log(lat, lng);
-      if (!lat && !lng) {
-        return;
-      }
-      async function fetchCityData() {
-        try {
-          setIsLoadingGeocoding(true);
-          setGeoCodingError('');
-          const res = await fetch(
-            `${import.meta.env.VITE_BASE_URL}?latitude=${lat}&longitude=${lng}`,
+  useEffect(() => {
+    if (!lat || !lng) return;
+
+    async function fetchCityData() {
+      try {
+        setIsLoadingGeocoding(true);
+        setGeoCodingError('');
+        const res = await fetch(
+          `${import.meta.env.VITE_BASE_URL}?latitude=${lat}&longitude=${lng}`,
+        );
+
+        const data = await res.json();
+        console.log(data);
+
+        if (!data.countryCode)
+          throw new Error(
+            'That does not seem to be a city. Click somewhere else. 🙃',
           );
 
-          const data = await res.json();
-          console.log(data);
-
-          if (!data.countryCode)
-            throw new Error(
-              'That does not seem to be a city. Click somewhere else. 🙃',
-            );
-          setCityName(data.city || data.locality || '');
-          setCountry(data.countryName);
-          setEmoji(convertToEmoji(data.countryCode));
-        } catch (err) {
-          setGeoCodingError(err.message);
-        } finally {
-          setIsLoadingGeocoding(false);
-        }
+        setCityName(data.city || data.locality || '');
+        setCountry(data.countryName);
+        setEmoji(convertToEmoji(data.countryCode));
+      } catch (err) {
+        setGeoCodingError(err.message);
+      } finally {
+        setIsLoadingGeocoding(false);
       }
-      fetchCityData();
-    },
-    [lat, lng],
-  );
+    }
+
+    fetchCityData();
+  }, [lat, lng]);
+
   return (
     <>
       <form
         className="mt-4 flex w-full flex-col gap-8 rounded-lg bg-slate-700 p-4 font-mono md:p-8 md:py-2"
-        //   onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
       >
         <div className="relative flex flex-col gap-2 ">
           <label htmlFor="cityName" className="text-white">
@@ -99,34 +73,46 @@ function Form() {
           <span className="absolute right-4 top-9 text-3xl">{emoji}</span>
         </div>
       </form>
-      <div
-        className="mt-4 flex w-full flex-col gap-8 rounded-lg bg-slate-700 p-4 font-mono md:p-8 md:py-3"
-        //   onSubmit={handleSubmit}
-      >
+
+      <div className="mt-4 flex w-full flex-col gap-8 rounded-lg bg-slate-700 p-4 font-mono md:p-8 md:py-3">
         <div className="relative flex flex-col gap-2 font-mono">
           <label htmlFor="cityName" className="mx-auto text-green-300">
-            Hospital in Ascending Order of Distance
+            Hospitals in Ascending Order of Distance
           </label>
-          {hospitals.map((hospital) => (
-            <div
-              key={hospital.id}
-              className="flex flex-col gap-2 border-b-2 border-blue-600"
-            >
-              <div className="flex justify-between">
-                <span className="text-lg text-indigo-300">{hospital.name}</span>
-                <span className="text-green-300 text-white">
-                  {hospital.distance}
-                </span>
-              </div>
-              <span className="text-white">{hospital.address}</span>
-              <a
-                href={`tel:${hospital.contact}`}
-                className="text-white hover:text-grey-400"
+
+          {isPending ? (
+            <div className="text-white">Loading hospitals...</div>
+          ) : hospitals && hospitals.length > 0 ? (
+            hospitals.map((hospital) => (
+              <div
+                key={hospital.id}
+                className="flex flex-col gap-2 border-b-2 border-blue-600"
               >
-                {hospital.contact}
-              </a>
-            </div>
-          ))}
+                <div className="flex justify-between">
+                  <span className="text-lg text-indigo-300">
+                    {hospital.name}
+                  </span>
+                  <span className="text-green-300">
+                    {parseFloat(hospital.distance).toFixed(2)} km
+                  </span>
+                </div>
+                <span className="text-white">{hospital.address}</span>
+                <div className="flex items-center justify-between">
+                  <span className="text-white">
+                    Beds Available: {hospital.availableBeds}
+                  </span>
+                  <a
+                    href={`tel:${hospital.phone}`}
+                    className="flex items-center text-white hover:text-grey-400"
+                  >
+                    <BsFillTelephoneFill className="mr-2" /> {hospital.phone}
+                  </a>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-white">No hospitals found.</div>
+          )}
         </div>
       </div>
     </>

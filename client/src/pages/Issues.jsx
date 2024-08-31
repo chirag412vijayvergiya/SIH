@@ -2,8 +2,12 @@ import { Route, Routes } from 'react-router-dom';
 import Map from '../features/MapForDocPat/Map';
 import SidebarHos from '../features/MapForDocPat/SidebarHos';
 import Form from '../features/MapForDocPat/Form';
+import { useUrlPosition } from '../hooks/useUrlPosition';
+import { useGetNearhospitals } from '../features/MapForDocPat/useGetNearhospitals';
 
 function Issues() {
+  const [lat, lng] = useUrlPosition();
+  const { isPending, hospitals } = useGetNearhospitals(lat, lng);
   return (
     <div className="relative my-[1vh] mt-7 flex h-[100vh] flex-col overscroll-none p-6 md:mt-[3.2rem] md:h-[86vh] md:flex-row">
       {/* // <div className="relative flex h-[86vh] overscroll-none p-6 md:mt-[3.2rem]"> */}
@@ -17,7 +21,7 @@ function Issues() {
           <Route path="" element={<Form />} />
         </Route>
       </Routes>
-      <Map />
+      <Map hospitals={hospitals} />
     </div>
   );
 }

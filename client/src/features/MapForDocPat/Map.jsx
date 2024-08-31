@@ -13,7 +13,8 @@ import { useGeolocation } from '../../hooks/useGeolocation';
 import { useUrlPosition } from '../../hooks/useUrlPosition';
 import { useNavigate } from 'react-router-dom';
 
-function Map() {
+function Map({ hospitals }) {
+  console.log('Hii :- ', hospitals);
   const navigate = useNavigate();
   const [mapPosition, setMapPosition] = useState([20.385044, 78.072971]);
   const {
@@ -94,14 +95,35 @@ function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
-        <Marker position={mapPosition}>
+        {/* <Marker position={mapPosition}>
           <Popup>
             <div className="flex flex-col items-center">
               <span className="text-sm leading-none">A pretty CSS3 popup.</span>
               <span>Easily customizable.</span>
             </div>
           </Popup>
-        </Marker>
+        </Marker> */}
+        {hospitals &&
+          hospitals.map((hospital) => (
+            <Marker
+              key={hospital._id}
+              position={[
+                hospital.coordinates.latitude,
+                hospital.coordinates.longitude,
+              ]}
+            >
+              <Popup>
+                <div className="flex flex-col font-mono">
+                  <span className="text-lg font-bold">{hospital.name}</span>
+                  <span>{hospital.address}</span>
+                  <span>Beds Available: {hospital.availableBeds}</span>
+                  <a href={`tel:${hospital.phone}`} className="text-blue-200">
+                    Call: {hospital.phone}
+                  </a>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
         <ChangeCenter position={mapPosition} />
         <DetectClick />
       </MapContainer>
