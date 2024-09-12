@@ -188,9 +188,19 @@ reviewSchema.pre('validate', function (next) {
   next();
 });
 
-reviewSchema.index({ patient: 1, doctor: 1 }, { unique: true });
+// reviewSchema.index({ patient: 1, doctor: 1 }, { unique: true });
 
-reviewSchema.index({ patient: 1, hospital: 1 }, { unique: true });
+// reviewSchema.index({ patient: 1, hospital: 1 }, { unique: true });
+
+// Creating separate conditional unique indexes
+reviewSchema.index(
+  { patient: 1, doctor: 1 },
+  { unique: true, partialFilterExpression: { doctor: { $exists: true } } },
+);
+reviewSchema.index(
+  { patient: 1, hospital: 1 },
+  { unique: true, partialFilterExpression: { hospital: { $exists: true } } },
+);
 
 reviewSchema.pre(/^find/, function (next) {
   this.populate({
@@ -272,4 +282,9 @@ reviewSchema.post(/^findOneAnd/, async (doc) => {
 });
 
 const Review = mongoose.model('Review', reviewSchema);
+
+Review.syncIndexes()
+  .then(() => console.log('Indexes synced'))
+  .catch((error) => console.error('Error syncing indexes:', error));
+
 module.exports = Review;

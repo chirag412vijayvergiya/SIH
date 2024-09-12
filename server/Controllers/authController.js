@@ -216,7 +216,7 @@ const forgotPassword = async (req, res, model, UserUrl, next) => {
   //   'host',
   // )}/api/v1/${UserUrl}/resetPassword/${resetToken}`;
 
-  const message = `Forgot your password? Use the following Reset Token to reset your password: ${resetToken}.\nIf you didn't request a password reset, please ignore this email!`;
+  const message = `Forgot your password? Use the following Reset Token to reset your password: ${resetToken}\nIf you didn't request a password reset, please ignore this email!`;
   try {
     await sendEmail({
       email: user.email,

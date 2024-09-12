@@ -152,11 +152,13 @@ const patientRouter = require('./Routes/patientRoute');
 const messageRouter = require('./Routes/messageRoute');
 const chatRouter = require('./Routes/chatRoute');
 const hospitalRouter = require('./Routes/hospitalRoute');
+const InventoryRouter = require('./Routes/InventoryRoute');
 
 const appointmentRouter = require('./Routes/appointmentRoute');
 const reviewRouter = require('./Routes/reviewRoute');
 const GlobalErrorHandler = require('./Controllers/errorController');
 const appointmentController = require('./Controllers/appointmentContoller');
+
 // const Message = require('./models/messageModel');
 // const { default: mongoose } = require('mongoose');
 
@@ -266,6 +268,7 @@ app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/messages', messageRouter);
 app.use('/api/v1/chats', chatRouter);
 app.use('/api/v1/hospitals', hospitalRouter);
+app.use('/api/v1/inventory', InventoryRouter);
 
 //For other route which we have not defned!
 app.all('*', (req, res, next) => {

@@ -31,6 +31,7 @@ const DoctorProfile = lazy(() => import('./pages/DoctorProfile'));
 const Appointments = lazy(() => import('./pages/Appointments'));
 const Success = lazy(() => import('./pages/Success'));
 const Cancel = lazy(() => import('./pages/Cancel'));
+const InventoryMana = lazy(() => import('./pages/InventoryMana'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -79,6 +80,16 @@ function App() {
                 <Route path="reviews" element={<Reviews />} />
                 <Route path="settings" element={<Settings />} />
                 <Route path="account" element={<Profile />} />
+              </Route>
+              <Route
+                element={
+                  <ProtectedRoute roles={['doctor', 'Hospital', 'admin']}>
+                    <AppLayout />
+                  </ProtectedRoute>
+                }
+              >
+                {/* Only Doctors or Hospitals can access this route */}
+                <Route path="inventory" element={<InventoryMana />} />
               </Route>
               <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<HomePage />} />
