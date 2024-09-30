@@ -9,6 +9,8 @@ function Button({ children, type, disabled, onClick }) {
     reset: `p-small flex items-center font-sans tracking-wider justify-center text-sm rounded-md font-medium px-3 md:px-6 py-2 text-grey-50 dark:bg-slate-800 bg-indigo-800 `,
     update: `p-small flex items-center tracking-wider justify-center rounded-md text-sm font-medium bg-slate-800 px-3 md:px-6 py-2 text-grey-50 bg-indigo-400 dark:bg-indigo-500 font-sans`,
     danger: `p-small flex items-center tracking-wider justify-center rounded-md text-sm font-medium px-3 md:px-6 py-2 text-grey-50 bg-red-700 font-sans`,
+    addInventory: `rounded-lg bg-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75`,
+    checkInventory: `rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-75`,
     sidebar:
       'font-medium text-base subpixel-antialiased tracking-wide flex flex-row items-center gap-2',
     position:

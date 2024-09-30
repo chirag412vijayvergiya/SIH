@@ -283,8 +283,8 @@ reviewSchema.post(/^findOneAnd/, async (doc) => {
 
 const Review = mongoose.model('Review', reviewSchema);
 
-Review.syncIndexes()
-  .then(() => console.log('Indexes synced'))
-  .catch((error) => console.error('Error syncing indexes:', error));
+// Review.syncIndexes()
+//   .then(() => console.log('Indexes synced'))
+//   .catch((error) => console.error('Error syncing indexes:', error));
 
 module.exports = Review;

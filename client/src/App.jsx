@@ -12,8 +12,9 @@ import MainHeader from './ui/WithoutProtected/Header/MainHeader';
 import DefaultSpinner from './ui/DefaultSpinner';
 import ChatPage from './pages/ChatPage';
 import { ChatProvider } from './Context/ChatContext';
-import Form from './features/MapForDocPat/Form';
-import SidebarHos from './features/MapForDocPat/SidebarHos';
+
+// import Form from './features/MapForDocPat/Form';
+// import SidebarHos from './features/MapForDocPat/SidebarHos';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const Login = lazy(() => import('./pages/Login'));
@@ -32,6 +33,7 @@ const Appointments = lazy(() => import('./pages/Appointments'));
 const Success = lazy(() => import('./pages/Success'));
 const Cancel = lazy(() => import('./pages/Cancel'));
 const InventoryMana = lazy(() => import('./pages/InventoryMana'));
+const BillingMana = lazy(() => import('./pages/BillingMana'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -90,6 +92,7 @@ function App() {
               >
                 {/* Only Doctors or Hospitals can access this route */}
                 <Route path="inventory" element={<InventoryMana />} />
+                <Route path="Billing" element={<BillingMana />} />
               </Route>
               <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<HomePage />} />

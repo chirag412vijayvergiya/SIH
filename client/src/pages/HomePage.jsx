@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import SEO from '../ui/SEO.jsx';
+// import Chatbot from '../ui/Chatbot.jsx';
 function HomePage() {
   const navigate = useNavigate();
 
@@ -37,6 +38,7 @@ function HomePage() {
       <Testimonials />
       <Footer />
       <Issue />
+      {/* <Chatbot /> */}
     </div>
   );
 }

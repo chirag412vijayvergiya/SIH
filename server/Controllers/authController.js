@@ -7,6 +7,7 @@ const doctor = require('../models/doctorModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/AppError');
 const sendEmail = require('../utils/email');
+const Hospital = require('../models/hospitalModel');
 
 // ******************************************************************************* //
 
@@ -77,6 +78,9 @@ exports.signupdoctor = catchAsync(async (req, res, next) => {
   await signup(req, res, doctor, next);
 });
 
+exports.signuphospital = catchAsync(async (req, res, next) => {
+  await signup(req, res, Hospital, next);
+});
 // ******************************************************************************* //
 // For logging in
 const login = async (req, res, model, next) => {
@@ -105,6 +109,10 @@ exports.logindoctor = catchAsync(async (req, res, next) => {
 // For login Patient
 exports.loginpatient = catchAsync(async (req, res, next) => {
   await login(req, res, patient, next);
+});
+
+exports.loginhospital = catchAsync(async (req, res, next) => {
+  await login(req, res, Hospital, next);
 });
 
 // ******************************************************************************* //
@@ -180,6 +188,9 @@ exports.protectpatient = catchAsync(async (req, res, next) => {
   await protect(req, res, patient, next);
 });
 
+exports.protecthospital = catchAsync(async (req, res, next) => {
+  await protect(req, res, Hospital, next);
+});
 // ******************************************************************************* //
 
 // Give different permissions to different users
@@ -250,6 +261,10 @@ exports.forgotPasswordPatient = catchAsync(async (req, res, next) => {
   await forgotPassword(req, res, patient, 'patient', next);
 });
 
+exports.forgotPasswordHospital = catchAsync(async (req, res, next) => {
+  await forgotPassword(req, res, Hospital, 'hospital', next);
+});
+
 // ******************************************************************************* //
 
 const resetPassword = async (req, res, model, next) => {
@@ -290,6 +305,10 @@ exports.resetPasswordPatient = catchAsync(async (req, res, next) => {
   await resetPassword(req, res, patient, next);
 });
 
+exports.resetPasswordHospital = catchAsync(async (req, res, next) => {
+  await resetPassword(req, res, Hospital, next);
+});
+
 // ******************************************************************************* //
 
 const updatePassword = async (req, res, model, next) => {
@@ -320,6 +339,10 @@ exports.updatePasswordDoctor = catchAsync(async (req, res, next) => {
 // For updatePassword Patient
 exports.updatePasswordPatient = catchAsync(async (req, res, next) => {
   await updatePassword(req, res, patient, next);
+});
+
+exports.updatePasswordHospital = catchAsync(async (req, res, next) => {
+  await updatePassword(req, res, Hospital, next);
 });
 
 // At the time of deployment, the sameSite attribute be should be None.

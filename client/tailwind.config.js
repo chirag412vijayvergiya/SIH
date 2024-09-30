@@ -13,8 +13,13 @@ export default {
         'spin-slow': 'spin 3s linear infinite',
         bounce: 'bounce 15s infinite',
         ping: 'ping 5s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'slide-left': 'slide-left 8s linear infinite',
       },
       keyframes: {
+        'slide-left': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-20%)' },
+        },
         bounce: {
           '0%, 100%': {
             transform: 'translateX(-4%)',

@@ -6,6 +6,7 @@ import { FaPersonCane } from 'react-icons/fa6';
 import { MdOutlinePayments } from 'react-icons/md';
 import { HiOutlineUsers } from 'react-icons/hi2';
 import { HiOutlineCog6Tooth } from 'react-icons/hi2';
+import { MdInventory } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import { useUser } from '../features/authentication/Patients/useUser';
 
@@ -53,7 +54,7 @@ function Sidebar() {
               </span>
             </Button>
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/patients"
             className="rounded-md p-1 pl-3 text-grey-600  hover:text-indigo-600 aria-[current=page]:bg-gray-300 aria-[current=page]:text-indigo-800 dark:text-gray-400 dark:hover:text-indigo-400 dark:aria-[current=page]:bg-slate-700 dark:aria-[current=page]:text-indigo-400"
           >
@@ -61,7 +62,7 @@ function Sidebar() {
               <FaPersonCane />
               <span>Patients</span>
             </Button>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink
             to="/doctors"
@@ -73,7 +74,7 @@ function Sidebar() {
             </Button>
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to="/payments"
             className="rounded-md p-1 pl-3 text-grey-600  hover:text-indigo-600 aria-[current=page]:bg-gray-300 aria-[current=page]:text-indigo-800 dark:text-gray-400 dark:hover:text-indigo-400 dark:aria-[current=page]:bg-slate-700 dark:aria-[current=page]:text-indigo-400"
           >
@@ -81,7 +82,7 @@ function Sidebar() {
               <MdOutlinePayments />
               <span>Payments</span>
             </Button>
-          </NavLink>
+          </NavLink> */}
           {currentRole === 'patient' && (
             <NavLink
               to="/reviews"
@@ -92,6 +93,28 @@ function Sidebar() {
                 <span>Reviews</span>
               </Button>
             </NavLink>
+          )}
+          {currentRole !== 'patient' && (
+            <>
+              <NavLink
+                to="/inventory"
+                className="rounded-md p-1 pl-3 text-grey-600  hover:text-indigo-600 aria-[current=page]:bg-gray-300 aria-[current=page]:text-indigo-800 dark:text-gray-400 dark:hover:text-indigo-400 dark:aria-[current=page]:bg-slate-700 dark:aria-[current=page]:text-indigo-400"
+              >
+                <Button type="sidebar">
+                  <MdInventory />
+                  <span>Inventory</span>
+                </Button>
+              </NavLink>
+              <NavLink
+                to="/billing"
+                className="rounded-md p-1 pl-3 text-grey-600  hover:text-indigo-600 aria-[current=page]:bg-gray-300 aria-[current=page]:text-indigo-800 dark:text-gray-400 dark:hover:text-indigo-400 dark:aria-[current=page]:bg-slate-700 dark:aria-[current=page]:text-indigo-400"
+              >
+                <Button type="sidebar">
+                  <MdInventory />
+                  <span>QuickBill</span>
+                </Button>
+              </NavLink>
+            </>
           )}
         </div>
       </div>

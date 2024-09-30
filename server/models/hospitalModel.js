@@ -18,6 +18,10 @@ const hospitalSchema = new mongoose.Schema(
       lowercase: true,
       validate: [validator.isEmail, 'Please provide your email'],
     },
+    role: {
+      type: String,
+      default: 'hospital',
+    },
     website: { type: String, required: true },
     address: { type: String, required: true },
     coordinates: {
