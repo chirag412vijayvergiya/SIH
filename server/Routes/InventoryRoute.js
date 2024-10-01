@@ -19,4 +19,6 @@ router.get(
   inventoryController.getMyInventory,
 );
 
+router.get('/alerts', inventoryController.getInventoryAlerts);
+
 module.exports = router;

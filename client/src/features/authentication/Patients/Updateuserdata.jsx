@@ -25,7 +25,7 @@ function Updateuserdata({
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(avatar, Gender, fullName);
+    // console.log(avatar, Gender, fullName);
 
     updateUser(
       { fullName, Gender, photo: avatar },
@@ -44,13 +44,13 @@ function Updateuserdata({
     setGender(currentGender);
   }
 
-  console.log(
-    currentPhoto,
-    currentFullName,
-    currentEmail,
-    currentRole,
-    currentGender,
-  );
+  // console.log(
+  //   currentPhoto,
+  //   currentFullName,
+  //   currentEmail,
+  //   currentRole,
+  //   currentGender,
+  // );
   return (
     fullName !== undefined && (
       <form

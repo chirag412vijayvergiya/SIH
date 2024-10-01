@@ -23,20 +23,22 @@ function InventoryRow({ index, elements }) {
   return (
     <tr className="tracking-medium items-center text-sm">
       <td className="whitespace-nowrap px-5 py-4">{index}</td>
-      <td className="whitespace-nowrap px-5 py-4">{elements.name}</td>
-      <td className="whitespace-nowrap px-5 py-4">{elements.expiryDate}</td>
+      <td className="whitespace-nowrap px-5 py-4">{elements.itemName}</td>
+      <td className="whitespace-nowrap px-5 py-4">{elements.category}</td>
+      <td className="whitespace-nowrap px-5 py-4">{elements.currentStock}</td>
+      {/* <td className="whitespace-nowrap px-5 py-4">{elements.expiryDate}</td> */}
       {/* <td className="whitespace-nowrap px-5 py-4">{elements.status}</td> */}
       <td className="whitespace-nowrap py-4 pr-5">
         <span
           className={`inline-block w-full max-w-xs border px-0.5 py-0.5 text-center font-medium ${getStatusClass(
-            elements.status,
+            elements.stockStatus,
           )}`}
-          style={{ borderRadius: '6px', minWidth: '90px' }}
+          style={{ borderRadius: '15px', minWidth: '90px' }}
         >
-          {elements.status}
+          {elements.stockStatus}
         </span>
       </td>
-      <td className="whitespace-nowrap px-5 py-4">{elements.supplier} </td>
+      <td className="whitespace-nowrap px-5 py-4">{elements.supplierName} </td>
       {/* <td className="whitespace-nowrap px-5 py-4">{elements.status}</td>
       <td className="whitespace-nowrap px-5 py-4">
         {formatDate(elements.appointmentDate)}
