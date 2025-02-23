@@ -260,6 +260,14 @@ app.use(xss());
 //   console.log('Hello from the middleware 👋');
 //   next();
 // });
+
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Welcome to the backend API!',
+  });
+});
+
 app.use('/api/v1/hospitals', hospitalRouter);
 app.use('/api/v1/patient', patientRouter);
 app.use('/api/v1/doctor', doctorRouter);
